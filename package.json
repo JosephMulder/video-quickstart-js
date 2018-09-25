@@ -12,7 +12,15 @@
     "build:examples:localvideosnapshot": "copyfiles -f examples/localvideosnapshot/src/helpers.js examples/localvideosnapshot/public && browserify examples/localvideosnapshot/src/index.js > examples/localvideosnapshot/public/index.js",
     "build:examples:mediadevices": "copyfiles -f examples/mediadevices/src/helpers.js examples/mediadevices/public && browserify examples/mediadevices/src/index.js > examples/mediadevices/public/index.js",
     "build:quickstart": "browserify quickstart/src/index.js > quickstart/public/index.js",
-    "start": "npm run build && node server"
+    "clean": "npm-run-all clean:*",
+    "clean:examples": "npm-run-all clean:examples:*",
+    "clean:examples:bandwidthconstraints": "rimraf examples/bandwidthconstraints/public/index.js examples/bandwidthconstraints/public/helpers.js",
+    "clean:examples:codecpreferences": "rimraf examples/codecpreferences/public/index.js examples/codecpreferences/public/helpers.js",
+    "clean:examples:localvideofilter": "rimraf examples/localvideofilter/public/index.js examples/localvideofilter/public/helpers.js",
+    "clean:examples:localvideosnapshot": "rimraf examples/localvideosnapshot/public/index.js examples/localvideosnapshot/public/helpers.js",
+    "clean:examples:mediadevices": "rimraf examples/mediadevices/public/index.js examples/mediadevices/public/helpers.js",
+    "clean:quickstart": "rimraf quickstart/public/index.js",
+    "start": "npm run clean && npm run build && node server"
   },
   "repository": {
     "type": "git",
@@ -39,7 +47,11 @@
     "prismjs": "^1.6.0",
     "stackblur-canvas": "^1.4.0",
     "twilio": "^3.0.0-rc.16",
-    "twilio-video": "^1.3.0"
+    "twilio-video": "^1.3.0",
+    "browserify": "^14.3.0",
+    "copyfiles": "^1.2.0",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
     "browserify": "^14.3.0",
